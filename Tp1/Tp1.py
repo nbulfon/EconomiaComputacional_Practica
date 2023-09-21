@@ -78,11 +78,10 @@ print("R^2: " + str(coefDeterminacion));
 
 #grafico final:
 
-valores_ajustados = regresion.predict(x);
 # armo el grafico de dispersión con los datos reales ->
 _plt.scatter(ipm, ipc, marker='o', color='green', label='IPC e IPM');
 # dibujo la recta ajustada ->
-_plt.plot(ipm, valores_ajustados, color='red', linewidth=2, label='Recta de Regresión ajustada');
+_plt.plot(ipm, estimadoresAjustados, color='red', linewidth=2, label='Recta de Regresión ajustada');
 
 # ejes y título ->
 _plt.xlabel('IPM');
