@@ -1,8 +1,8 @@
 # Trabajo práctico 1: Regresión Lineal Simple en Python
 
-# Imports
+# Imports ->
+#import scipy.stats as _stats
 import pandas as _pandas
-import scipy.stats as _stats
 import numpy as _numpy
 import matplotlib.pyplot as _plt
 import statsmodels.api as _statsModel
@@ -18,14 +18,13 @@ datos = _pandas.read_excel(rutaArchivo, sheet_name='Table 5_10')
 ipc = datos['IPC'];
 ipm = datos['IPM'];
 
-#armo el grafico de dispersion
+#armo el grafico de dispersion ->
 _plt.scatter(ipm, ipc, marker='o',color='green',label='IPC e IPM');
 _plt.xlabel('IPM');
 _plt.ylabel('IPC');
 _plt.title('Gráfico IPC e IPM en EEUU (1980-2006)');
 
 _plt.legend();
-
 
 _plt.grid(True);
 _plt.show();
@@ -45,7 +44,7 @@ _plt.show();
 # IPM como variable regresora. Porque en teoría se supone que al aumentar primero el IPM, eso
 # empujaría al un alza consecuente en el IPC.
 
-# Regresion:
+# Regresion ->
 x = ipm;
 x = _statsModel.add_constant(x);
 y = ipm;
@@ -59,7 +58,7 @@ print(resultados);
 # la prueba t y el coeficiente de significancia individual.
 
 
-# Parámetros y Coef. de determinacion (R^2):
+# Parámetros y Coef. de determinacion (R^2) ->
 #media_y = _numpy.mean(y);
 media_x = _numpy.mean(x ** 2);
 varianza_x = _numpy.sum(x- media_x);
@@ -76,45 +75,26 @@ print("R^2: " + str(coefDeterminacion));
 
 # 3) Obtenga un gráfico final con los datos verdaderos y la recta ajustada.
 # Rotule los ejes, colóquele un título al gráfico e incorpore las leyendas.
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
+#grafico final:
 
+valores_ajustados = regresion.predict(x);
+# armo el grafico de dispersión con los datos reales ->
+_plt.scatter(ipm, ipc, marker='o', color='green', label='IPC e IPM');
+# dibujo la recta ajustada ->
+_plt.plot(ipm, valores_ajustados, color='red', linewidth=2, label='Recta de Regresión ajustada');
 
+# ejes y título ->
+_plt.xlabel('IPM');
+_plt.ylabel('IPC');
+_plt.title('Gráfico IPC e IPM en EEUU (1980-2006)');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+_plt.legend()
+# muestro el grafico ->
+_plt.grid(True);
+_plt.show();
+    
+    
 
 
 
