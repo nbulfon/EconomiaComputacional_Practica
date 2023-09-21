@@ -7,7 +7,7 @@ import numpy as _numpy
 import matplotlib.pyplot as _plt
 import statsmodels.api as _statsModel
 
-rutaArchivo = r'C:\\Nicolas\EconomiaComputacional\\EconomiaComputacional\\Tp1\\Table 5_10.xls';
+rutaArchivo = r'C:\\NICOLAS\\FACULTAD\MATERIAS\\Cursando\\Economia computacional\\EconomiaComputacional\Tp1\\Table 5_10.xls';
 # Paso 1: cargar datos desde un archivo Excel ->
 datos = _pandas.read_excel(rutaArchivo, sheet_name='Table 5_10')
 
@@ -54,36 +54,24 @@ regresion = _statsModel.OLS(y, x).fit();
 resultados = regresion.summary();
 print(resultados);
 
+# En los resultados se puede ver, como el modelo se ajusta perfectamente a los datos
+# (en un 100%). Por otro lado, se puede ver que el coeficiente es significativo, observando
+# la prueba t y el coeficiente de significancia individual.
+
+
 # Parámetros y Coef. de determinacion (R^2):
-media_y = _numpy.mean(y);
-media_x = _numpy.mean(x);
+#media_y = _numpy.mean(y);
+media_x = _numpy.mean(x ** 2);
+varianza_x = _numpy.sum(x- media_x);
 
-## HACER LA COVARIANZA Y LOS PARAMETROS CON FORMULA. VER LIBRO GUJARATI
-covarianza = _numpy.cov(x,y);
-
-varianza_x = _numpy.sum(x- media_x) ** 2;
-
-beta = covarianza / varianza_x;
-intercepto = media_y - beta * media_x;
+estimadores = datos['IPM'];
+estimadoresAjustados = regresion.fittedvalues;
+residuos = regresion.resid;
 
 # R^2
-estimado_y = intercepto + beta * x;
-coefDeterminacion = 1 - (_numpy.sum((y - estimado_y) ** 2) / _numpy.sum((y - media_y) ** 2))
+coefDeterminacion = _numpy.var(estimadoresAjustados, ddof=1) / _numpy.var(estimadores, ddof=1)
 
-#coefDeterminacion = _numpy.var(media_x, ddof=1) / _numpy.var(x, ddof=1);
-
-print("Beta: "+ str(beta) + " , " + "Intercepto: "+ str(intercepto) + " , " + "R^2: " + str(coefDeterminacion));
-
-
-
-
-
-
-
-
-
-
-
+print("R^2: " + str(coefDeterminacion));
 
 
 # 3) Obtenga un gráfico final con los datos verdaderos y la recta ajustada.
