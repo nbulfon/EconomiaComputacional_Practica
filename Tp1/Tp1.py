@@ -79,6 +79,37 @@ print("Beta: "+ str(beta) + " , " + "Intercepto: "+ str(intercepto) + " , " + "R
 
 
 
+# 3) Obtenga un gráfico final con los datos verdaderos y la recta ajustada.
+# Rotule los ejes, colóquele un título al gráfico e incorpore las leyendas.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
 
 
 
