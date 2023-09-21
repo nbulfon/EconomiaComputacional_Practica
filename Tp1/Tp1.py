@@ -57,7 +57,10 @@ print(resultados);
 # Parámetros y Coef. de determinacion (R^2):
 media_y = _numpy.mean(y);
 media_x = _numpy.mean(x);
-covarianza = _numpy.sum( (x - media_x) * (y - media_y) );
+
+## HACER LA COVARIANZA Y LOS PARAMETROS CON FORMULA. VER LIBRO GUJARATI
+covarianza = _numpy.cov(x,y);
+
 varianza_x = _numpy.sum(x- media_x) ** 2;
 
 beta = covarianza / varianza_x;
@@ -70,6 +73,10 @@ coefDeterminacion = 1 - (_numpy.sum((y - estimado_y) ** 2) / _numpy.sum((y - med
 #coefDeterminacion = _numpy.var(media_x, ddof=1) / _numpy.var(x, ddof=1);
 
 print("Beta: "+ str(beta) + " , " + "Intercepto: "+ str(intercepto) + " , " + "R^2: " + str(coefDeterminacion));
+
+
+
+
 
 
 
