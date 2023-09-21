@@ -8,7 +8,7 @@ import matplotlib.pyplot as _plt
 import statsmodels.api as _statsModel
 
 rutaArchivo = r'C:\\NICOLAS\\FACULTAD\MATERIAS\\Cursando\\Economia computacional\\EconomiaComputacional\Tp1\\Table 5_10.xls';
-# Paso 1: cargar datos desde un archivo Excel ->
+# cargo los datos desde el excel ->
 datos = _pandas.read_excel(rutaArchivo, sheet_name='Table 5_10')
 
 
