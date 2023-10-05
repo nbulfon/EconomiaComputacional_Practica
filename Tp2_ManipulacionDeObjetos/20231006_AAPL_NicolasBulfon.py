@@ -8,11 +8,10 @@
 
 # Imports ->
 #import scipy.stats as _stats
+#import statsmodels.api as _statsModel
 import pandas as _pandas
 import numpy as _numpy
 import matplotlib.pyplot as _plt
-import statsmodels.api as _statsModel
-from datetime import datetime
 
 #1) Carga del archivo "AAPL.csv".
 rutaArchivo = r'C:\\NICOLAS\FACULTAD\MATERIAS\\Cursando\Economia computacional\EconomiaComputacional_Practica\\Tp2_ManipulacionDeObjetos\\AAPL.csv';
@@ -52,10 +51,30 @@ datos_2018_2019 = datos_pMinimo_pMaximo_cierreAjustado.loc['2018-01-01':'2019-12
 # y el precio de apertura. El gráfico deberá contener título, la leyenda de los ejes,
 # como así también la leyenda del significado de cada gráfico superpuesto.
 
+arrayFechas = datos.index;
+# Selecciona un subconjunto de fechas para mostrar cada 40 dias
+fechasAMostrarVisualmente = datos.index[::40];
+
+_plt.figure(figsize=(12, 6));
+
+_plt.plot( arrayFechas, datos['Close'], label='Precio de Cierre', color='blue');
+_plt.plot( arrayFechas, datos['Open'], label='Precio de Apertura', color='green');
+
+_plt.title('Precios de Cierre y Apertura de Apple 2018-2023');
+_plt.xlabel('Fecha');
+_plt.ylabel('Precio');
+_plt.legend();
+_plt.grid(False);
+
+# pongo las fechas (a nivel visual) cada 40 dias para que se vea bien el grafico.
+_plt.xticks(fechasAMostrarVisualmente, rotation=45);
+_plt.xticks(rotation=45);
+# muestro el grafico ->
+_plt.show();
 
 
-
-#9) Hacer un informe en Word con todos los datos obtenidos y gráficos, pasarlo a pdf y enviarlo por email junto con el Script. En el informe detallar el nombre del alumno y fecha.
+#9) Hacer un informe en Word con todos los datos obtenidos y gráficos, pasarlo a pdf y enviarlo por email
+# junto con el Script. En el informe detallar el nombre del alumno y fecha.
 
 
 
