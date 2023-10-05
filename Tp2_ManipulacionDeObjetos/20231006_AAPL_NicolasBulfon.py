@@ -43,7 +43,7 @@ datosDeCierre = datos.filter(items=['Date', 'Close']);
 fechaNov2018 = datetime.strptime('2018-11-09', '%Y-%m-%d');
 datos_ValorDeCierre_Nov2018 = datosDeCierre.loc[ (datosDeCierre['Date'] == fechaNov2018), 'Close'];
 
-x = datosDeCierre.loc['Date']
+x = datosDeCierre['Date']
 
 datos_ValorDeCierre_Nov2018 = datosDeCierre.filter(datosDeCierre.loc['Date'] == fechaNov2018)
 
