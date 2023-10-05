@@ -15,7 +15,7 @@ import statsmodels.api as _statsModel
 from datetime import datetime
 
 #1) Carga del archivo "AAPL.csv".
-rutaArchivo = r'C:\\Nicolas\\EconomiaComputacional\\EconomiaComputacional_Practica\\Tp2_ManipulacionDeObjetos\\AAPL.csv';
+rutaArchivo = r'C:\\NICOLAS\FACULTAD\MATERIAS\\Cursando\Economia computacional\EconomiaComputacional_Practica\\Tp2_ManipulacionDeObjetos\\AAPL.csv';
 datos = _pandas.read_csv(rutaArchivo);
 
 #2) Indexar el archivo con la columna de fechas.
@@ -40,15 +40,21 @@ datos_apertura_cierre_volumen = datos.filter(items=['Open','Close','Volume']);
 
 #6) En un subconjunto (ej. subset3) obtenga el valor de cierre para el día 9/11/2018.
 datosDeCierre = datos.filter(items=['Date', 'Close']);
-fechaNov2018 = datetime.strptime('2018-11-09', '%Y-%m-%d');
-datos_ValorDeCierre_Nov2018 = datosDeCierre.loc[ (datosDeCierre['Date'] == fechaNov2018), 'Close'];
+fecha = '2018-11-09';
+datosDeCierreNov2018 = datosDeCierre.loc[fecha, 'Close'];
 
-x = datosDeCierre['Date']
+#7) Obtenga un subconjunto (ej. subset 4) para los años 2018 y 2019,
+# con las columnas precio máximo, mínimo y precio de cierre ajustado.
+datos_pMinimo_pMaximo_cierreAjustado = datos.filter(items=['High','Low','Adj Close']);
+datos_2018_2019 = datos_pMinimo_pMaximo_cierreAjustado.loc['2018-01-01':'2019-12-31'];
 
-datos_ValorDeCierre_Nov2018 = datosDeCierre.filter(datosDeCierre.loc['Date'] == fechaNov2018)
+#8) Genere un gráfico de líneas para todo el período considerado con el precio de cierre de la acción,
+# y el precio de apertura. El gráfico deberá contener título, la leyenda de los ejes,
+# como así también la leyenda del significado de cada gráfico superpuesto.
 
-#7) Obtenga un subconjunto (ej. subset 4) para los años 2018 y 2019, con las columnas precio máximo, mínimo y precio de cierre ajustado.
-#8) Genere un gráfico de líneas para todo el período considerado con el precio de cierre de la acción, y el precio de apertura. El gráfico deberá contener título, la leyenda de los ejes, como así también la leyenda del significado de cada gráfico superpuesto.
+
+
+
 #9) Hacer un informe en Word con todos los datos obtenidos y gráficos, pasarlo a pdf y enviarlo por email junto con el Script. En el informe detallar el nombre del alumno y fecha.
 
 
