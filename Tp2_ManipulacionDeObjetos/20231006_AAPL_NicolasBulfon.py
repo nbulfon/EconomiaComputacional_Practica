@@ -27,8 +27,14 @@ media_ColumnaOpen = _numpy.mean( datos_2020['Open']);
 media_ColumnaClose = _numpy.mean( datos_2020['Close']);
 media_ColumnaAdjClose = _numpy.mean( datos_2020['Adj Close']);
 
+
 minimo_ColumnaLow = _numpy.min(datos_2020['Low']);
+#indice_minimo = datos_2020['Low'].idxmin()
+
 maximo_ColumnaHight = _numpy.max(datos_2020['High']);
+
+media_ColumnaVolume = _numpy.mean(datos_2020['Volume']);
+maximo_ColumnaVolume = _numpy.max(datos_2020['Volume']);
 varianza_ColumnaVolume = _numpy.var(datos_2020['Volume']);
 
 #5) Obtenga un subconjunto (ej. subset2 ó dataset2) de todo el período,
@@ -51,13 +57,24 @@ datos_2018_2019 = datos_pMinimo_pMaximo_cierreAjustado.loc['2018-01-01':'2019-12
 # como así también la leyenda del significado de cada gráfico superpuesto.
 
 arrayFechas = datos.index;
-# Selecciona un subconjunto de fechas para mostrar cada 40 dias
+# Selecciona un subconjunto de fechas para mostrar cada 40 dias.
 fechasAMostrarVisualmente = datos.index[::40];
+
+# calculo la línea de tendencia para el precio de cierre ->
+coeficientes = _numpy.polyfit(range(len(arrayFechas)), datos['Close'], 1)
+tendenciaCierre = _numpy.poly1d(coeficientes)
+# calculo la línea de tendencia para el precio de apertura ->
+coeficientes = _numpy.polyfit(range(len(arrayFechas)), datos['Open'], 1)
+tendenciaApertura = _numpy.poly1d(coeficientes)
 
 _plt.figure(figsize=(12, 6));
 
 _plt.plot( arrayFechas, datos['Close'], label='Precio de Cierre', color='blue');
 _plt.plot( arrayFechas, datos['Open'], label='Precio de Apertura', color='green');
+
+# agrego las líneas de tendencia ->
+_plt.plot(arrayFechas, tendenciaCierre(range(len(arrayFechas))), linestyle='--', color='red', label='Línea de Tendencia (Cierre)')
+_plt.plot(arrayFechas, tendenciaApertura(range(len(arrayFechas))), linestyle='--', color='orange', label='Línea de Tendencia (Apertura)')
 
 _plt.title('Precios de Cierre y Apertura de Apple 2018-2023');
 _plt.xlabel('Fecha');
@@ -70,5 +87,3 @@ _plt.xticks(fechasAMostrarVisualmente, rotation=45);
 _plt.xticks(rotation=45);
 # muestro el grafico ->
 _plt.show();
-
-
