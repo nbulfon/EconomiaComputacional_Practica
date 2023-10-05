@@ -1,7 +1,6 @@
-# Economía Computacional
-# Trabajo práctico: Manipulación de objetos
+#           Economía Computacional
+#           Trabajo práctico: Manipulación de objetos
 #---------------------------------------------
-
 
 #Con el archivo "AAPL.csv" que contiene información de la cotización diaria durante 5 años de las acciones de la empresa APPLE, genere un script en Spyder para realizar las siguientes operaciones de manipulación de datos.
 #Una vez que redacte el Script, envíelo adjunto con el siguiente nombre: "20231006_AAPL_[NombreyApellido].py".
@@ -71,25 +70,5 @@ _plt.xticks(fechasAMostrarVisualmente, rotation=45);
 _plt.xticks(rotation=45);
 # muestro el grafico ->
 _plt.show();
-
-
-#9) Hacer un informe en Word con todos los datos obtenidos y gráficos, pasarlo a pdf y enviarlo por email
-# junto con el Script. En el informe detallar el nombre del alumno y fecha.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
